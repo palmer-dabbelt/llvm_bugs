@@ -1,0 +1,22 @@
+LANGUAGES   += c++
+COMPILEOPTS += -Wall
+COMPILEOPTS += -pedantic
+COMPILEOPTS += -Werror
+COMPILEOPTS += -Wextra
+COMPILEOPTS += -std=c++11
+
+LANGUAGES   += bash
+
+LANGUAGES   += llvm
+
+# Many of my bugs won't manifest themselves without optimizations
+# enabled, so be sure they're always on!
+LANGUAGES   += c++
+COMPILEOPTS += -O2
+
+LANGUAGES   += llvm
+COMPILEOPTS += -O2
+
+BINARIES    += right-shift-zero
+SOURCES     += right-shift-zero/main.c++
+TESTSRC     += test.bash
