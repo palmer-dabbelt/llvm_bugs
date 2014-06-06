@@ -1,3 +1,4 @@
+# My test harnesses are written in C++
 LANGUAGES   += c++
 COMPILEOPTS += -Wall
 COMPILEOPTS += -pedantic
@@ -5,18 +6,25 @@ COMPILEOPTS += -Werror
 COMPILEOPTS += -Wextra
 COMPILEOPTS += -std=c++11
 
-LANGUAGES   += bash
-
+# The whole point of this project is to test LLVM IR bugs, so of
+# course I need to write some manual LLVM.
 LANGUAGES   += llvm
+
+# bash is used to run tests
+LANGUAGES   += bash
 
 # Many of my bugs won't manifest themselves without optimizations
 # enabled, so be sure they're always on!
 LANGUAGES   += c++
-COMPILEOPTS += -O2
+COMPILEOPTS += -O3
 
 LANGUAGES   += llvm
-COMPILEOPTS += -O2
+COMPILEOPTS += -O3
 
 BINARIES    += right-shift-zero
 SOURCES     += right-shift-zero/main.c++
+TESTSRC     += test.bash
+
+BINARIES    += cat-64-1
+SOURCES     += cat-64-1/main.c++
 TESTSRC     += test.bash
